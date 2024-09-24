@@ -30,7 +30,9 @@ class MainFrame(ttk.Frame):
         self.createWidgets()
 
     def createWidgets(self):
+        #sets font to be used in text
         self.testFont = tkFont.Font(family="Times", size=16)
+        #creates inital widgets
         self.checkbutton = tk.Checkbutton(self)
         self.textEntry = tk.Entry(self, font=self.testFont)
         self.addListItemButton = tk.Button(self, text= "+", command=self.addListItem)
@@ -44,13 +46,16 @@ class MainFrame(ttk.Frame):
         self.textEntry.grid(row=0,column=1, sticky=tk.W+tk.E)
         self.addListItemButton.grid(row=0,column=2,)
 
+    #Function that adds on more task list on + button press
     def addListItem(self):
         print(self.currentTaskList)
+        #Loops throught the current number of tasks and makes one more in the next row
         for i in range(self.currentTaskList-1,self.currentTaskList):
             self.checkbutton = tk.Checkbutton(self)
             self.checkbutton.grid(row=i+1,column=0)
             self.textEntry = tk.Entry(self, font=self.testFont)
             self.textEntry.grid(row=i+1,column=1, sticky=tk.W+tk.E)
+        #increases the current tasks by 1
         self.currentTaskList+=1
 
 
